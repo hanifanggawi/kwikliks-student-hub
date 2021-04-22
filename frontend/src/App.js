@@ -1,25 +1,19 @@
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Table from './components/Table'
+import Schedule from './components/Schedule';
 // import {useState} from 'react'
 
 function App() {
-  // const [task, setTask] = useState()
-
-  // const fetchTask = async (taskid) => {
-  //   const res = await fetch(`http://localhost:8000/api/task-detail/${taskid}/`)
-  //   const data = await res.json()
-
-  //   return data
-  // }
-  
-  // sadfadf
-
-
   return (
+    <Router>
     <div className="container">
       <Navbar/>
-      <Table/>
+      <Route path='/' exact component={Table} />
+      <Route path='/schedule' component={Schedule} />
+      {/* <Table/> */}
     </div>
+    </Router>
   );
 }
 

@@ -38,16 +38,16 @@ const TableRow = ({course}) => {
           }
         getTasks(course.id)
         getLinks(course.id)
-      }, [])
+      }, [course])
 
     const fetchTasks = async (course_id) => {
-        const res = await fetch(`http://localhost:8000/api/task-list/${course_id}`)
+        const res = await fetch(`http://localhost:8050/api/task-list/${course_id}`)
         const data = await res.json()
         return data
     }
 
     const fetchLinks = async (course_id) => {
-        const res = await fetch(`http://localhost:8000/api/link-list/${course_id}`)
+        const res = await fetch(`http://localhost:8050/api/link-list/${course_id}`)
         const data = await res.json()
         return data
     }
@@ -55,7 +55,7 @@ const TableRow = ({course}) => {
     const addTask = async (text) => {
         const newtask = {title: text, course: course.id}
         const csrftoken = getCookie('csrftoken')
-        const res = await fetch('http://localhost:8000/api/task-create/',{
+        const res = await fetch('http://localhost:8050/api/task-create/',{
             method: 'POST',
             headers: {
               'Content-type': 'application/json',
@@ -71,7 +71,7 @@ const TableRow = ({course}) => {
 
     const deleteTask = async (id) => {
         const csrftoken = getCookie('csrftoken')
-        await fetch(`http://localhost:8000/api/task-delete/${id}/`, { 
+        await fetch(`http://localhost:8050/api/task-delete/${id}/`, { 
             method: 'DELETE',
             headers: {'X-CSRFToken':csrftoken}
         })
@@ -85,27 +85,22 @@ const TableRow = ({course}) => {
                 <p>{course.dosen}</p>
             </td>
             <td>
-                {links.filter((link) => link.link_type == "M").length > 0 ?
-                        links.filter((link) => link.link_type == "M").map((mat_link) => (
-                            <p><a href={mat_link.url}>{mat_link.title}</a></p>
+                {links.filter((link) => link.link_type === "M").length > 0 ?
+                        links.filter((link) => link.link_type === "M").map((mat_link) => (
+                            <p key={mat_link.id}><a href={mat_link.url}>{mat_link.title}</a></p>
                         ))
                         :
                         <p>-</p>
                 }
             </td>
             <td>
-                {links.filter((link) => link.link_type == "A").length > 0 ?
-                    links.filter((link) => link.link_type == "A").map((asg_link) => (
-                        <p><a href={asg_link.url}>{asg_link.title}</a></p>
+                {links.filter((link) => link.link_type === "A").length > 0 ?
+                    links.filter((link) => link.link_type === "A").map((asg_link) => (
+                        <p key={asg_link.id}><a href={asg_link.url}>{asg_link.title}</a></p>
                     ))
                     :
                     <p>-</p>
                 }
-                {/* {links.filter((link) => link.link_type == "A").map((asg_link) => (
-                    // <p><a href={asg_link.url}>{asg_link.title} {(asg_link == undefined).toString()}</a></p>
-                    <p><a href="#">{(asg_link == undefined) && "EMPTY"}</a></p>
-                    
-                ))} */}
             </td>
             <td >
             {tasks.map((task) => (
@@ -113,9 +108,9 @@ const TableRow = ({course}) => {
                     task ={task} 
                     course_id={course.id} 
                     addTask={addTask}
-                    key={task.id}
                     deleteTask = {deleteTask}
                     getCookie = {getCookie}
+                    key={task.id}
                 />
             ))}
             {showAddTask ? 

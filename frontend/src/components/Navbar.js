@@ -1,4 +1,5 @@
 import logo from './kwikliks.svg'
+import {Link} from 'react-router-dom'
 
 const Navbar = () => {
     return (
@@ -6,12 +7,11 @@ const Navbar = () => {
             <div className="nav-item">
                 <div className="nav-brand">
                     <img src={logo} className="logo" alt="[]"/>
-                    <a href="#">KwiKliks</a>
-                    {/* <span></span> */}
+                    <Link to="/" className="logotype"> KwiKliks </Link>
                 </div>
                 <ul className="nav-list">
-                    <li><a href="#">Links</a></li>
-                    <li><a href="#">Schedule</a></li>
+                    <li><Link to="/"> Links </Link></li>
+                    <li><Link to="/schedule"> Schedule </Link></li> 
                 </ul>
             </div>
         </nav>

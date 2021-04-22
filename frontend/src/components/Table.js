@@ -47,7 +47,7 @@ const Table = () => {
     }, [])
 
     const fetchCourses = async () => {
-        const res = await fetch(`http://localhost:8000/api/course-list/`)
+        const res = await fetch(`http://localhost:8050/api/course-list/`)
         const data = await res.json()
         return data
     }

@@ -10,7 +10,7 @@ const Task = ({ task, course_id, deleteTask , getCookie}) => {
         const updatedTask = {...task, completed : !task.completed}
         const csrftoken = getCookie('csrftoken')
         setChecked(!checked)
-        await fetch(`http://localhost:8000/api/task-update/${id}/`, {
+        await fetch(`http://localhost:8050/api/task-update/${id}/`, {
             method: 'PUT',
             headers: {
               'Content-type': 'application/json',
