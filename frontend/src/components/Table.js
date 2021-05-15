@@ -61,7 +61,12 @@ const Table = () => {
                     <th>Matkul</th>
                     <th>Materi Related</th>
                     <th>Assignment Related</th>
-                    <th>Tasks</th>
+                    <th>
+                        <div className="table-task">
+                            <span>Tasks</span>
+                            <span>Deadline</span>
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody className="table-body">
