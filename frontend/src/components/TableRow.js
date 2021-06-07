@@ -1,12 +1,16 @@
 import { FaPlus } from 'react-icons/fa'
 import Task from './Task'
 import AddTask from './AddTask'
+import QuickLink from './QuickLink'
 import {useState, useEffect} from 'react'
+import { MdEdit, MdDelete} from 'react-icons/md'
 
 const TableRow = ({course}) => {
     const [tasks, setTasks] = useState([])
     const [links, setLinks] = useState([])
     const [showAddTask, setShowAddTask] = useState(true)
+    const [showEdit, setShowEdit] = useState(false)
+    const [editingMode, setEditingMode] = useState(false)
 
 
     function getCookie(name) {
@@ -79,28 +83,63 @@ const TableRow = ({course}) => {
     }
 
     return (
-        <tr> 
+        <tr 
+            className="table-row"
+            onMouseOver= {() => setShowEdit(true)} 
+            onMouseLeave= {() => setShowEdit(false)} 
+        > 
             <td>
-                <p><a href={course.url}>{course.matkul}</a></p>
-                <p>{course.dosen}</p>
+                {/* <QuickLink link={course} editingMode={editingMode} /> */}
+                <div className="activity-group">
+                    <p><a href={course.url}>{course.title}</a></p>
+                    {editingMode &&
+                    <div className="task-buttons">
+                        <MdEdit />
+                    </div>                           
+                    }
+                </div>
+                <span>{course.description}</span>
+                <div 
+                    className="table-edit" 
+                    style={{visibility:(showEdit || editingMode) ? 'visible' : 'hidden'}} 
+                    onClick={() => setEditingMode(!editingMode)} 
+                >
+                    <div className="edit-button" style={{ backgroundColor: (editingMode) ? "#217DE7" : "#FAFAFA"}}>
+                        <MdEdit style={{color: (editingMode) ? "#FAFAFA" : "#217DE7"}} />
+                    </div>
+
+                </div>
             </td>
             <td>
                 {links.filter((link) => link.link_type === "M").length > 0 ?
                         links.filter((link) => link.link_type === "M").map((mat_link) => (
-                            <p key={mat_link.id}><a href={mat_link.url}>{mat_link.title}</a></p>
+                            <QuickLink link={mat_link} editingMode={editingMode} />
                         ))
                         :
                         <p>-</p>
                 }
+            {editingMode && 
+                <div className="task-add">
+                    <FaPlus className="task-add-icon"/>
+                    <span>New Link</span>
+                </div>
+            }
+                
             </td>
             <td>
                 {links.filter((link) => link.link_type === "A").length > 0 ?
                     links.filter((link) => link.link_type === "A").map((asg_link) => (
-                        <p key={asg_link.id}><a href={asg_link.url}>{asg_link.title}</a></p>
+                        <QuickLink link={asg_link} editingMode={editingMode} />
                     ))
                     :
                     <p>-</p>
                 }
+            {editingMode && 
+                <div className="task-add">
+                    <FaPlus className="task-add-icon"/>
+                    <span>New Link</span>
+                </div>
+            }               
             </td>
             <td >
             {tasks.map((task) => (

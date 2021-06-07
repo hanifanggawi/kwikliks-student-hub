@@ -1,12 +1,12 @@
 from django.db import models
 
 class Course(models.Model):
-    matkul = models.CharField(max_length=50, default = "Course title")
-    dosen = models.CharField(max_length=30, null=True)
+    title = models.CharField(max_length=50, default = "Course title")
+    description = models.CharField(max_length=100, null=True)
     url = models.CharField(max_length=200, default="#")
 
     def __str__(self):
-        return self.matkul
+        return self.title
 
 # Create your models here.
 class Task(models.Model):

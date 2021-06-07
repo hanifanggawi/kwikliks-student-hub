@@ -9,7 +9,6 @@ const Task = ({ task, course_id, deleteTask , getCookie}) => {
     const [dueDate, setDueDate] = useState(task.duedate && new Date(Date.parse(task.duedate)))
     const [calenderOpened, setCalenderOpened] = useState(false)
     const [showButtons, setShowButtons] = useState(false)
-    const style = { color: "#217DE7", cursor: "pointer"}
 
     const updateTask = async (updatedTask) => {
         const csrftoken = getCookie('csrftoken')
@@ -63,13 +62,13 @@ const Task = ({ task, course_id, deleteTask , getCookie}) => {
 
                     </span>
                     <span id={`task-button-${course_id}-${task.id}`} className="task-buttons" style={{ visibility: (showButtons) ? 'visible' : 'hidden' }}>
-                        <MdEdit style={style} />
-                        <MdDelete style={style} onClick={() => deleteTask(task.id)}/>
+                        <MdEdit />
+                        <MdDelete onClick={() => deleteTask(task.id)}/>
                         
                         <DatePicker 
                             selected={dueDate} 
                             onChange={date => updateDueDate(date)} 
-                            customInput={<FaCalendar style={style} size= {12}/>}
+                            customInput={<FaCalendar size= {12}/>}
                             onCalendarOpen={() => setCalenderOpened(true)}
                             onCalendarClose={() => {setCalenderOpened(false); setShowButtons(false)}}
                         />
