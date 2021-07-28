@@ -2,14 +2,14 @@ import { useState } from 'react'
 import { FaCheck, FaTimes } from 'react-icons/fa'
 
 
-const AddTask = ({toggle, addTask, course_id}) => {
-    const [text, setText] = useState('')
+const EditTask = ({task, updateTask, closeEdit}) => {
+    const [text, setText] = useState(task.title)
 
     const onSubmit = (e) => {
         e.preventDefault()
-        // console.log(text)
-        addTask(text)
-        toggle()
+        const editedTask = {...task, title : text}
+        updateTask(editedTask)
+        closeEdit()
     }
 
     const style = { color: "#217DE7", cursor: "pointer" }
@@ -19,18 +19,18 @@ const AddTask = ({toggle, addTask, course_id}) => {
             <form className="task-form" onSubmit={onSubmit}>
                 <input type="checkbox" className="checkbox"/>
                 <input 
-                    id = {`add-${course_id}`}
+                    id = {`add-${task.course_id}`}
                     autoFocus="autofocus"
                     className="task-input"
                     type="text"
                     placeholder="New Task"
                     value={text} onChange={(e) => setText(e.target.value)}
                 />
-                <FaCheck onClick={onSubmit} style={style} />
-                <FaTimes style={style} onClick={toggle} />
+                <FaCheck style={style} onClick={onSubmit} />
+                <FaTimes style={style} onClick={closeEdit} />
             </form>
         </div>
     )
 }
 
-export default AddTask
+export default EditTask

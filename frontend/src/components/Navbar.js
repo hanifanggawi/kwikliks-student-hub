@@ -1,4 +1,4 @@
-import logo from './kwikliks.svg'
+import logo from '../static/img/kwikliks.svg'
 import {Link} from 'react-router-dom'
 
 const Navbar = () => {

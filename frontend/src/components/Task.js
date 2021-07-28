@@ -2,25 +2,15 @@ import { MdEdit, MdDelete } from 'react-icons/md'
 import { FaCalendar } from 'react-icons/fa'
 import { useState } from 'react'
 import DatePicker from 'react-datepicker'
+import EditTask from './forms/EditTask'
 import "react-datepicker/dist/react-datepicker.css";
 
-const Task = ({ task, course_id, deleteTask , getCookie}) => {
+const Task = ({ task, course_id, updateTask, deleteTask}) => {
     const [checked, setChecked] = useState(task.completed);
     const [dueDate, setDueDate] = useState(task.duedate && new Date(Date.parse(task.duedate)))
     const [calenderOpened, setCalenderOpened] = useState(false)
     const [showButtons, setShowButtons] = useState(false)
-
-    const updateTask = async (updatedTask) => {
-        const csrftoken = getCookie('csrftoken')
-        await fetch(`http://localhost:8050/api/task-update/${updatedTask.id}/`, {
-            method: 'PUT',
-            headers: {
-              'Content-type': 'application/json',
-              'X-CSRFToken':csrftoken,
-            },
-            body: JSON.stringify(updatedTask),
-          })
-    }
+    const [editingMode, setEditingMode] = useState(false)
 
     const checkTask = (task) => {
         const checkedTask = {...task, completed : !task.completed}
@@ -44,6 +34,10 @@ const Task = ({ task, course_id, deleteTask , getCookie}) => {
 
     
     return (
+        <>
+        {editingMode ?  
+            <EditTask task={task} updateTask={updateTask} closeEdit={() => setEditingMode(false)}/> 
+            :
         <div className="task" 
             onMouseOver={() => { setShowButtons(true) }} 
             onMouseLeave={() => { setShowButtons(calenderOpened) }}
@@ -62,7 +56,7 @@ const Task = ({ task, course_id, deleteTask , getCookie}) => {
 
                     </span>
                     <span id={`task-button-${course_id}-${task.id}`} className="task-buttons" style={{ visibility: (showButtons) ? 'visible' : 'hidden' }}>
-                        <MdEdit />
+                        <MdEdit onClick={(() => setEditingMode(true))}/>
                         <MdDelete onClick={() => deleteTask(task.id)}/>
                         
                         <DatePicker 
@@ -78,8 +72,9 @@ const Task = ({ task, course_id, deleteTask , getCookie}) => {
                 <span className="task-duedate">
                     {dueDate && dateFormat(dueDate)}
                 </span>
-
         </div>
+        }
+        </>
     )
 }
 
