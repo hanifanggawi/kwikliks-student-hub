@@ -1,16 +1,25 @@
+import { useState } from 'react'
 import { MdEdit, MdDelete} from 'react-icons/md'
-// import {Link} from 'react-router-dom'
+import EditLink from './forms/EditLink'
 
-const QuickLink = ({link, editingMode}) => {
+const QuickLink = ({link, editingMode, deleteLink, updateLink}) => {
+    const [showForm, setShowForm] = useState(false)
+
     return (
-        <div key={link.id} className="link">
-        {/* <Link to={(editingMode) ? null : link.url}>{link.title} </Link> */}
-            <a className={(editingMode) ? "link-a" : "link-a"} href={(editingMode) ? null : link.url}>{link.title}</a>
+        <div className="link">
+            <a className={(editingMode) ? "link-a" : "link-a"} href={`${(editingMode) ? null : link.url}`}>{link.title}</a>
             {editingMode &&
                 <div className="task-buttons">
-                    <MdEdit />
-                    <MdDelete/>
+                    <MdEdit onClick={() => setShowForm(true)}/>
+                    <MdDelete onClick={() => deleteLink(link.id)}/>
                 </div>                           
+            }
+            {showForm && 
+                <EditLink
+                    link={link}
+                    updateLink={updateLink} 
+                    closeForm={() => setShowForm(false)}
+                />
             }
         </div>
     )

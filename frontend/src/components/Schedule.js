@@ -1,4 +1,4 @@
-import image from '../img/jadwalsms4.png'
+import image from '../static/img/jadwalsms4.png'
 
 const Schedule = () => {
     return (

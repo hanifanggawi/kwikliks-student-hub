@@ -35,6 +35,35 @@ def linksByCourse(request, fk):
     serializer = LinkSerializer(links, many=True)
     return Response(serializer.data)
 
+@api_view(["POST"])
+def linkCreate(request):
+    title = request.data.get("title")
+    url = request.data.get('url')
+    course_id = request.data.get("course_id")
+    link_type = request.data.get("link_type")
+    course = Course.objects.filter(id= course_id).first()
+    link = Link.objects.create(title=title, url=url, course=course, link_type= link_type)
+
+    serializer = LinkSerializer(link)
+
+    return Response(serializer.data)
+
+@api_view(["PUT"])
+def linkUpdate(request, pk):
+    link = Link.objects.get(id=pk)
+    serializer = LinkSerializer(instance=link, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+@api_view(["DELETE"])
+def linkDelete(request, pk):
+    link = Link.objects.get(id=pk)
+    link.delete()
+        
+    return Response("Item Deleted")
 
 @api_view(["GET"])
 def courseList(request):
@@ -47,6 +76,35 @@ def courseDetail(request, pk):
     courses = Course.objects.filter(id = pk)
     serializer = CourseSerializer(courses, many=True)
     return Response(serializer.data)
+
+@api_view(["POST"])
+def courseCreate(request):
+    title = request.data.get("title")
+    description = request.data.get("description")
+    url = request.data.get("url")
+    
+    course = Course.objects.create(title = title, description=description, url=url)
+
+    serializer = CourseSerializer(course)
+
+    return Response(serializer.data)
+
+@api_view(["PUT"])
+def courseUpdate(request, pk):
+    course = Course.objects.get(id=pk)
+    serializer = CourseSerializer(instance=course, data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+    return Response(serializer.data)
+
+@api_view(["DELETE"])
+def courseDelete(request, pk):
+    course = Course.objects.get(id=pk)
+    course.delete()
+        
+    return Response("Item Deleted")
 
 @api_view(["GET"])
 def tasksAll(request):
@@ -68,7 +126,6 @@ def taskDetail(request, pk):
 
 @api_view(["POST"])
 def taskCreate(request):
-    # print("===============================DISINI===========================================")
     title = request.data.get("title")
     course_id = request.data.get('course')
     course = Course.objects.filter(id= course_id).first()
