@@ -7,7 +7,14 @@ const QuickLink = ({link, editingMode, deleteLink, updateLink}) => {
 
     return (
         <div className="link">
-            <a className={(editingMode) ? "link-a" : "link-a"} href={`${(editingMode) ? null : link.url}`}>{link.title}</a>
+            <a 
+                className={(editingMode) ? "link-a" : "link-a"} 
+                href={`${(editingMode) ? null : link.url}`}
+                target="_blank" 
+                rel="noopener noreferrer"
+            >
+                    {link.title}
+            </a>
             {editingMode &&
                 <div className="task-buttons">
                     <MdEdit onClick={() => setShowForm(true)}/>

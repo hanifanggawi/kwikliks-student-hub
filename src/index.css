@@ -19,7 +19,7 @@ body, input {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     background-color: #111111;
     color: white;
     padding: 1em 20vw;
@@ -89,7 +89,7 @@ body, input {
     border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 5px 5px 0 0;
-    margin-top: 1em;
+    margin-top: 2em;
     overflow: hidden;
 
 }
@@ -358,7 +358,7 @@ body, input {
     left: 0;
     top: 0;
     z-index: 1;
-    background-color: rgb(0,0,0); /* Fallback color */
+    /* background-color: rgb(0,0,0); */
     background-color: rgba(0,0,0,0.25); /* Black w/ opacity */
 }
 
@@ -456,6 +456,51 @@ body, input {
     color: #ffffff;
 }
 
+.course-add {
+    margin-top: 2em;
+    display: flex;
+    align-items: center;
+    border: none;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.09);
 
+}
+
+.course-add-icon {
+    color: white;
+    padding: 1em;
+    border-radius: 5px;
+    width: 1.7em;
+    height: 1.7em;
+    padding: 0.3em;
+    cursor: pointer;
+
+}
+
+.button-container {
+    padding: 7em 10em;
+    background-color: #ffffff;
+    border-radius: 10px  10px 0 0;
+    margin-top: 3em;
+    border-bottom: 4px solid #0D6EFD;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.09);
+}
+
+.alert-box {
+    display: flex;
+    align-items: center;
+    padding: 1em 3em;
+    background-color: #fcd7d2;
+    border-radius: 6px;
+    margin-bottom: 2em;
+    position: fixed;
+    bottom: -1em;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.09);
+}
+
+.alert-close {
+    cursor: pointer;
+    color: #000000;
+    margin-left: 0.5em;
+}
 
 
