@@ -8,13 +8,10 @@ import { useState } from 'react';
 function App() {
 
   return (
-    <Router>
     <div className="container">
       <Navbar/>
-      <Route path='/' exact component={Table} />
-      <Route path='/schedule' component={Schedule} />
+      <Table/>
     </div>
-    </Router>
   );
 }
 
