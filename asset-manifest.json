@@ -1,27 +1,27 @@
 {
   "files": {
     "main.css": "/kwikliks-student-hub/static/css/main.f36f3c5d.chunk.css",
-    "main.js": "/kwikliks-student-hub/static/js/main.6b28d011.chunk.js",
-    "main.js.map": "/kwikliks-student-hub/static/js/main.6b28d011.chunk.js.map",
-    "runtime-main.js": "/kwikliks-student-hub/static/js/runtime-main.440fd4fc.js",
-    "runtime-main.js.map": "/kwikliks-student-hub/static/js/runtime-main.440fd4fc.js.map",
+    "main.js": "/kwikliks-student-hub/static/js/main.cb12888b.chunk.js",
+    "main.js.map": "/kwikliks-student-hub/static/js/main.cb12888b.chunk.js.map",
+    "runtime-main.js": "/kwikliks-student-hub/static/js/runtime-main.99ea9d94.js",
+    "runtime-main.js.map": "/kwikliks-student-hub/static/js/runtime-main.99ea9d94.js.map",
     "static/css/2.d22f252f.chunk.css": "/kwikliks-student-hub/static/css/2.d22f252f.chunk.css",
-    "static/js/2.90fc6947.chunk.js": "/kwikliks-student-hub/static/js/2.90fc6947.chunk.js",
-    "static/js/2.90fc6947.chunk.js.map": "/kwikliks-student-hub/static/js/2.90fc6947.chunk.js.map",
-    "static/js/3.53b4ec9d.chunk.js": "/kwikliks-student-hub/static/js/3.53b4ec9d.chunk.js",
-    "static/js/3.53b4ec9d.chunk.js.map": "/kwikliks-student-hub/static/js/3.53b4ec9d.chunk.js.map",
+    "static/js/2.27f6434a.chunk.js": "/kwikliks-student-hub/static/js/2.27f6434a.chunk.js",
+    "static/js/2.27f6434a.chunk.js.map": "/kwikliks-student-hub/static/js/2.27f6434a.chunk.js.map",
+    "static/js/3.ee943dad.chunk.js": "/kwikliks-student-hub/static/js/3.ee943dad.chunk.js",
+    "static/js/3.ee943dad.chunk.js.map": "/kwikliks-student-hub/static/js/3.ee943dad.chunk.js.map",
     "index.html": "/kwikliks-student-hub/index.html",
     "static/css/2.d22f252f.chunk.css.map": "/kwikliks-student-hub/static/css/2.d22f252f.chunk.css.map",
     "static/css/main.f36f3c5d.chunk.css.map": "/kwikliks-student-hub/static/css/main.f36f3c5d.chunk.css.map",
-    "static/js/2.90fc6947.chunk.js.LICENSE.txt": "/kwikliks-student-hub/static/js/2.90fc6947.chunk.js.LICENSE.txt",
+    "static/js/2.27f6434a.chunk.js.LICENSE.txt": "/kwikliks-student-hub/static/js/2.27f6434a.chunk.js.LICENSE.txt",
     "static/media/jadwalsms4.b130876d.png": "/kwikliks-student-hub/static/media/jadwalsms4.b130876d.png",
     "static/media/kwikliks.af7b82c0.svg": "/kwikliks-student-hub/static/media/kwikliks.af7b82c0.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.440fd4fc.js",
+    "static/js/runtime-main.99ea9d94.js",
     "static/css/2.d22f252f.chunk.css",
-    "static/js/2.90fc6947.chunk.js",
+    "static/js/2.27f6434a.chunk.js",
     "static/css/main.f36f3c5d.chunk.css",
-    "static/js/main.6b28d011.chunk.js"
+    "static/js/main.cb12888b.chunk.js"
   ]
 }
